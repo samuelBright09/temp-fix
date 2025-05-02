@@ -36,8 +36,8 @@
         <!-- Interior card -->
         <div class="room">
           <div class="text">
-            <h3 class="room-name">Living Room</h3>
-            <p class="currentTemp">27°</p>
+            <h3 class="room-name"></h3>
+            <p class="current-temp"></p>
           </div>
         </div>
         <div class="main-content">
@@ -101,19 +101,20 @@
               id="coolInput"
               type="number"
               min="10"
-              max="22"
+              max="24"
               placeholder="Cool"
             />
             <input
               id="warmInput"
               type="number"
-              min="22"
+              min="25"
               max="32"
               placeholder="Warm"
             />
             <button id="save">Save</button>
             <button id="close"><ion-icon name="close"></ion-icon></button>
 
+            <span class="success"></span>
             <span class="error"></span>
           </div>
         </div>
@@ -121,7 +122,8 @@
 
       <div
         class="container rooms-control animate__animated animate__fadeIn"
-      ></div>
+      >
+    </div>
     </div>
 
     <!-- Ionicons -->
