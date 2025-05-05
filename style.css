@@ -520,7 +520,7 @@ input[type="time"] {
 
 .global-ac-button {
   flex: 1;
-  background-color: var(--cool-blue);
+  background-color: var(--warm-red);
   color: white;
   border: none;
   padding: 12px;
@@ -536,16 +536,16 @@ input[type="time"] {
 }
 
 .global-ac-button:hover {
-  background-color: #3a4db0;
+  background-color:  #d45557;
   transform: translateY(-2px);
 }
 
 .global-ac-button.off {
-  background-color: var(--warm-red);
+  background-color: var(--cool-blue);
 }
 
 .global-ac-button.off:hover {
-  background-color: #d45557;
+  background-color: #3a4db0;
 }
 
 .global-ac-button ion-icon {
