@@ -71,8 +71,8 @@ const rooms = [
     },
   }
 ];
-let selectedRoom = rooms[1];
-let currRoom = rooms[0];
+const selectedRoom = rooms[1];
+const currRoom = rooms[0];
 
 
 function handleTemperatureChange(action) {
@@ -89,23 +89,26 @@ function handleTemperatureChange(action) {
 }
 4
 // handle switch
-function handleACSwitch(e) {
-    if (e.target.classList.contains("switch")) {
-      const room = rooms.find(
-        (room) => room.name === e.target.parentNode.parentNode.id
-      );
-      room.toggleAircon();
-      generateRooms();
-    }
+// function handleACSwitch(e) {
+//     if (e.target.classList.contains("switch")) {
+//       const room = rooms.find(
+//         (room) => room.name === e.target.parentNode.parentNode.id
+//       );
+//       room.toggleAircon();
+//       generateRooms();
+//     }
   
-    if (e.target.classList.contains("room-name")) {
-      setSelectedRoom(e.target.parentNode.parentNode.id);
-    }
-  }
+//     if (e.target.classList.contains("room-name")) {
+//       setSelectedRoom(e.target.parentNode.parentNode.id);
+//     }
+//   }
 
 
-  function setPresetTemp (){
-
+  function setPresetTemp (e, coolBtn, currRoom = rooms[0]){
+    const isCoolPreset = e.target === coolBtn
+    // Set temperature based on which button was clicked
+    const presetTemp = isCoolPreset ? currRoom.coldPreset : currRoom.warmPreset;
+    currRoom.setCurrTemp(presetTemp);
   }
 
 
@@ -122,4 +125,4 @@ function handleACSwitch(e) {
 //   });
 // }
 
-module.exports = { rooms, selectedRoom, handleTemperatureChange };
+module.exports = { rooms, selectedRoom, handleTemperatureChange, setPresetTemp };
