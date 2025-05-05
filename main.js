@@ -392,14 +392,7 @@ function setPresetTemp(e) {
   const presetTemp = isCoolPreset ? currRoom.coldPreset : currRoom.warmPreset;
   currRoom.setCurrTemp(presetTemp);
   MainCurrentTemp.textContent = `${currRoom.currTemp}°`;
-  // change button colors when clicked
-  if (isCoolPreset) {
-    coolBtn.style.backgroundImage = coolOverlay;
-    warmBtn.style.backgroundImage = "none";
-  } else {
-    coolBtn.style.backgroundImage = "none";
-    warmBtn.style.backgroundImage = warmOverlay;
-  }
+  changeBtnBackgroundColor()
 }
 
 function handlePresetInput() {
