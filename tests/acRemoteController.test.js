@@ -4,6 +4,7 @@
 
 const { rooms, handleTemperatureChange, setPresetTemp } = require("./utils");
 
+
 describe("Room functionalities", () => {
   test("AC is initially off", () => {
     expect(rooms[0].airConditionerOn).toBeFalsy();
@@ -11,6 +12,7 @@ describe("Room functionalities", () => {
 
   // check if romm methods were called
   describe("Room methods", () => {
+
 
     describe("test for initial room", ()=>{
 
@@ -121,4 +123,5 @@ describe("Room functionalities", () => {
 
 
   });
+
 });

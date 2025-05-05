@@ -71,8 +71,10 @@ const rooms = [
     },
   }
 ];
+
 const selectedRoom = rooms[1];
 const currRoom = rooms[0];
+
 
 
 function handleTemperatureChange(action) {
@@ -89,6 +91,7 @@ function handleTemperatureChange(action) {
 }
 4
 // handle switch
+
 // function handleACSwitch(e) {
 //     if (e.target.classList.contains("switch")) {
 //       const room = rooms.find(
@@ -109,6 +112,7 @@ function handleTemperatureChange(action) {
     // Set temperature based on which button was clicked
     const presetTemp = isCoolPreset ? currRoom.coldPreset : currRoom.warmPreset;
     currRoom.setCurrTemp(presetTemp);
+
   }
 
 
@@ -126,3 +130,4 @@ function handleTemperatureChange(action) {
 // }
 
 module.exports = { rooms, selectedRoom, handleTemperatureChange, setPresetTemp };
+

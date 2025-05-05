@@ -393,6 +393,7 @@ function setPresetTemp(e) {
   currRoom.setCurrTemp(presetTemp);
   MainCurrentTemp.textContent = `${currRoom.currTemp}°`;
   changeBtnBackgroundColor()
+
 }
 
 function handlePresetInput() {
