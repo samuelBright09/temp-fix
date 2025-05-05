@@ -69,51 +69,74 @@ const rooms = [
         ? (this.airConditionerOn = false)
         : (this.airConditionerOn = true);
     },
-  }
+  },
 ];
 const selectedRoom = rooms[1];
 const currRoom = rooms[0];
 
-
+// handle change in temp
 function handleTemperatureChange(action) {
-    if (action === "increase" && currRoom.currTemp < 32) {
-      currRoom.increaseTemp();
-    } else if (action === "reduce" && currRoom.currTemp > 10) {
-      currRoom.decreaseTemp();
-    }
-    if (action === "increase" && selectedRoom.currTemp < 32) {
-      selectedRoom.increaseTemp();
-    } else if (action === "reduce" && selectedRoom.currTemp > 10) {
-      selectedRoom.decreaseTemp();
-    }
+  if (action === "increase" && currRoom.currTemp < 32) {
+    currRoom.increaseTemp();
+  } else if (action === "reduce" && currRoom.currTemp > 10) {
+    currRoom.decreaseTemp();
+  }
+  if (action === "increase" && selectedRoom.currTemp < 32) {
+    selectedRoom.increaseTemp();
+  } else if (action === "reduce" && selectedRoom.currTemp > 10) {
+    selectedRoom.decreaseTemp();
+  }
 }
-4
+
 // handle switch
 // function handleACSwitch(e) {
-//     if (e.target.classList.contains("switch")) {
-//       const room = rooms.find(
-//         (room) => room.name === e.target.parentNode.parentNode.id
-//       );
-//       room.toggleAircon();
-//       generateRooms();
-//     }
-  
-//     if (e.target.classList.contains("room-name")) {
-//       setSelectedRoom(e.target.parentNode.parentNode.id);
-//     }
+//   if (e.target.classList.contains("switch")) {
+//     const room = rooms.find(
+//       (room) => room.name === e.target.parentNode.parentNode.id
+//     );
+//     room.toggleAircon();
+//     generateRooms();
 //   }
 
+//   if (e.target.classList.contains("room-name")) {
+//     setSelectedRoom(e.target.parentNode.parentNode.id);
+//   }
+// }
 
-  function setPresetTemp (e, coolBtn, currRoom = rooms[0]){
-    const isCoolPreset = e.target === coolBtn
-    // Set temperature based on which button was clicked
-    const presetTemp = isCoolPreset ? currRoom.coldPreset : currRoom.warmPreset;
-    currRoom.setCurrTemp(presetTemp);
+//   set preset temp and updates dom
+function setPresetTemp(e, coolBtn, currRoom = rooms[0]) {
+  const isCoolPreset = e.target === coolBtn;
+  // Set temperature based on which button was clicked
+  const presetTemp = isCoolPreset ? currRoom.coldPreset : currRoom.warmPreset;
+  currRoom.setCurrTemp(presetTemp);
+}
+
+// handles and sets the warm and cool presets
+function handlePresetInput(coolInput, warmInput, room = currRoom) {
+    const coolValue = Number(coolInput);
+    const warmValue = Number(warmInput);
+
+    room.setColdPreset(coolValue);
+    room.setWarmPreset(warmValue);
   }
 
+// turns all ACs on
+function turnAllACsOn() {
+  rooms.forEach((room) => {
+    if (!room.airConditionerOn) {
+      room.toggleAircon();
+    }
+  });
+}
 
-
-
+// turn off all ACs
+function turnAllACsOff() {
+  rooms.forEach((room) => {
+    if (room.airConditionerOn) {
+      room.toggleAircon();
+    }
+  });
+}
 
 // // function to populate select element
 // function populateRooms(selectEl, optionsEl = null) {
@@ -125,4 +148,13 @@ function handleTemperatureChange(action) {
 //   });
 // }
 
-module.exports = { rooms, selectedRoom, handleTemperatureChange, setPresetTemp };
+module.exports = {
+  rooms,
+  selectedRoom,
+  currRoom,
+  handleTemperatureChange,
+  setPresetTemp,
+  turnAllACsOff,
+  turnAllACsOn,
+  handlePresetInput
+};
